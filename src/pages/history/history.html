@@ -1,0 +1,39 @@
+<!-- <ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>History</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  
+</ion-content> -->
+
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      ประวัติ
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-buttons item-start>
+      <button ion-button class="month" (click)="getByMonth()">{{viewTitle}}</button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button [disabled]="isToday" (click)="today()">Today</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+
+
+  <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" (onTitleChanged)="onViewTitleChanged($event)"
+    (onTimeSelected)="onTimeSelected($event)" noEventsLabel={{event}}>
+  </calendar>
+</ion-content>

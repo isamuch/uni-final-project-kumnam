@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>บัญชี</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+    <div class="head">
+      <img src="assets/account.png" />
+    </div>
+
+      <ion-card>
+
+        <ion-item color="light" class="head">บัญชีผู้ใช้</ion-item>
+        
+        <ion-item>
+          <ion-label>ชื่อ</ion-label>
+          <p item-end *ngIf="screen==true">{{ fullName }}</p>
+        </ion-item>
+        <ion-item>
+          <ion-label>อีเมล์</ion-label>
+          <p item-end *ngIf="screen==true">{{ email }}</p>
+        </ion-item>
+        <ion-item>
+          <ion-label>บ้าน</ion-label>
+          <p item-end *ngIf="screen==true">{{ homeName }}</p>
+        </ion-item>
+        <ion-item>
+          <ion-label>อุปกรณ์หลัก</ion-label>
+          <p item-end *ngIf="screen==true">{{ mainDevice }}</p>
+        </ion-item>
+        <ion-item>
+          <ion-label>จำนวนอุปกรณ์ทั้งหมด</ion-label>
+          <p item-end *ngIf="screen==true">{{ sumDevice }}</p>
+        </ion-item>
+      
+      </ion-card>
+
+      <ion-row>
+        <ion-col col-1></ion-col>
+        <ion-col col-10>
+          <button ion-button full (click)="changeHome()">
+            เลือกบ้าน
+          </button>
+        </ion-col>
+        <ion-col col-1></ion-col>
+      </ion-row>
+
+ 
+
+</ion-content>

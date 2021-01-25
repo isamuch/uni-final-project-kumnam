@@ -1,0 +1,23 @@
+page-controller {
+    h2 {
+        font-size: 20px !important;
+    }
+
+    h3 {
+        font-size: 18px !important;
+    }
+
+    ion-item img {
+        height: 40px;
+    }
+
+    ion-item ion-label {
+        margin-left: 10px !important;
+    }
+
+    h1 {
+        line-height: 70vh ;
+        text-align: center;
+        color: rgba(0,0,0,.4);
+    }
+}

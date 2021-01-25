@@ -1,0 +1,76 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title> {{ deviceName }} </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="crescent">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <h2>Outlier Detection Paterrns</h2>
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-label>แสดงโดย</ion-label>
+        <ion-select [(ngModel)]="type" interface="popover" (ionChange)="createGraph()">
+          <ion-option value="ปริมาณน้ำ" selected>ปริมาณน้ำ</ion-option>
+          <ion-option value="เวลา">เวลา</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-card>
+      <canvas #barCanvas></canvas>
+    </ion-card>
+  </ion-card>
+  <div class="data">
+    <ion-grid>
+      <ion-row class="head">
+        <ion-col col-3>วัน</ion-col>
+        <ion-col>ปริมาณน้ำ (ลิตร)</ion-col>
+        <ion-col>เวลา (นาที)</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-3>จันทร์</ion-col>
+        <ion-col class="content">{{ water[0] }}</ion-col>
+        <ion-col class="content">{{ time[0] }}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-3>อังตาร</ion-col>
+        <ion-col class="content">{{ water[1] }}</ion-col>
+        <ion-col class="content"> {{ time[1] }}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-3>พุธ</ion-col>
+        <ion-col class="content">{{ water[2] }}</ion-col>
+        <ion-col class="content"> {{ time[2] }}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-3>พฤหัสบดี</ion-col>
+        <ion-col class="content">{{ water[3] }}</ion-col>
+        <ion-col class="content"> {{ time[3] }}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-3>ศุกร์</ion-col>
+        <ion-col class="content">{{ water[4] }}</ion-col>
+        <ion-col class="content"> {{ time[4] }}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-3>เสาร์</ion-col>
+        <ion-col class="content">{{ water[5] }}</ion-col>
+        <ion-col class="content"> {{ time[5] }}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-3>อาทิตย์</ion-col>
+        <ion-col class="content">{{ water[6] }}</ion-col>
+        <ion-col class="content"> {{ time[6] }}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>

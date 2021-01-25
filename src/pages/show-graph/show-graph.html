@@ -1,0 +1,45 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>รายละเอียดอุปกรณ์</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="blue">
+    <h1 item-start>{{ deviceName }}</h1>
+  </div>
+
+  <ion-card>
+    <canvas #lineCanvas class="test"></canvas>
+  </ion-card>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>อัตราการไหล</ion-label>
+      <p item-end>{{ data }} ลิตร/นาที</p>
+    </ion-item>
+    <ion-item>
+      <ion-label>ชื่อบ้าน</ion-label>
+      <p item-end>{{ homeName }}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label>ตำแหน่ง</ion-label>
+      <p item-end>{{ location }} </p>
+    </ion-item>
+    <ion-item>
+      <ion-label>สถานะ</ion-label>
+      <button item-end ion-button color="secondary" *ngIf="available == true">open</button>
+      <button item-end ion-button color="danger" *ngIf="available == false">close</button>
+    </ion-item>
+    <ion-item>
+      <ion-label>ไอดีอุปกรณ์</ion-label>
+      <p item-end>{{ deviceID }}</p>
+    </ion-item>
+
+
+  </ion-list>
+
+</ion-content>

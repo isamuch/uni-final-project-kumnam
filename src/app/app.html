@@ -1,0 +1,122 @@
+<ion-menu id="myMenu" [content]="menu1">
+    <ion-content>
+        <div class="bgHead">
+            <ion-item no-lines id="head">
+                <img src="assets/kumnam_logo.png">
+                <br>
+                <p> {{account.fullName}}</p>
+            </ion-item>
+        </div>
+        <button ion-item menuClose no-lines (click)="setPage('main')" [class.activeHighlight]="checkActive('main')">
+            <ion-label>หน้าหลัก</ion-label>
+        </button>
+        <button ion-item menuClose no-lines (click)="setPage('monitor')" [class.activeHighlight]="checkActive('monitor')">
+            <ion-label>มอนิเตอร์</ion-label>
+        </button>
+
+        <button ion-item no-lines (click)="menuControl()" id="controller">
+            <ion-label>จัดการอุปกรณ์</ion-label>
+            <ion-icon name="md-arrow-dropright" item-end id="iconControl" *ngIf="statusMenuControl==false"></ion-icon>
+            <ion-icon name="md-arrow-dropdown" item-end id="iconControl" *ngIf="statusMenuControl==true"></ion-icon>
+        </button>
+        <div class="notShow" [class.show]="statusMenuControl">
+            <button ion-item menuClose no-lines id="sub" (click)="setPage('normal')" [class.activeHighlight]="checkActive('normal')">อุปกรณ์</button>
+            <button ion-item menuClose no-lines id="sub" (click)="setPage('outline')" [class.activeHighlight]="checkActive('outline')">Outline Detection</button>
+        </div>
+        <button ion-item menuClose no-lines (click)="setPage('history')" [class.activeHighlight]="checkActive('history')">
+            <ion-label>ประวัติ</ion-label>
+        </button>
+        <button ion-item menuClose no-lines (click)="setPage('logout')">
+            <ion-label>ออกจากระบบ</ion-label>
+        </button>
+        <a href="https://seniorproject.sit.kmutt.ac.th/showproject/IT57-RE10">
+            <button ion-item id="system" no-lines>Contact Us</button>
+        </a>
+        <ion-item id="version" no-lines>Version 1.1.1 Beta</ion-item>
+    </ion-content>
+</ion-menu>
+
+<style>
+    a {
+        text-decoration: none;
+    }
+
+    .bgHead {
+        background-color: rgba(0, 0, 0, .03);
+    }
+
+    ion-content {
+        background-color: white;
+    }
+
+    button {
+        background-color: transparent !important;
+        color: rgb(78, 78, 78);
+    }
+
+    .activeHighlight {
+        background-color: #488aff !important;
+        color: white;
+    }
+
+    ion-item {
+        background-color: transparent !important;
+
+    }
+
+    img {
+        display: block;
+        margin: auto;
+        height: 95px;
+
+    }
+
+    ion-item p {
+        color: rgb(78, 78, 78);
+        text-align: center;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    button {
+        box-shadow: none !important;
+    }
+
+    ion-label {
+        margin-left: 20px;
+        font-weight: bold;
+    }
+
+    #sub {
+        margin-left: 30px;
+        font-size: 13px;
+    }
+
+    #system {
+        margin-left: 20px;
+        font-size: 13px;
+        color: rgb(126, 126, 126);
+    }
+
+    #version {
+        margin-left: 20px;
+        font-size: 13px;
+        color: rgb(126, 126, 126);
+    }
+
+    #head {
+        color: rgb(78, 78, 78);
+    }
+
+    div.show {
+        height: 90px !important;
+    }
+
+    div.notShow {
+        height: 0;
+        overflow: hidden;
+        transition: 0.2s linear;
+    }
+</style>
+
+<ion-nav #menu1 [root]="rootPage"></ion-nav>

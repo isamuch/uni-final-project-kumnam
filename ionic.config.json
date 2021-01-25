@@ -1,0 +1,8 @@
+{
+  "name": "kumnamV2",
+  "app_id": "1651195f",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

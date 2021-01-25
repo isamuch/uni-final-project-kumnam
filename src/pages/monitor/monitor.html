@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>มอนิเตอร์</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content >
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content  refreshingSpinner="crescent">
+    </ion-refresher-content>
+  </ion-refresher>
+  <span *ngIf="screen==true">
+    <h1 *ngIf="length == 0">ไม่พบอุปกรณ์</h1>
+    <ion-list *ngIf="length != 0">
+      <ion-item-sliding #item *ngFor="let device of devices">
+        <button ion-item (click)="toShowGraph(device)">
+          <img src="assets/pic/bar-chart.png" item-start>
+          <ion-label>
+            <h2>
+              <ion-icon name="md-list-box" icon-only></ion-icon>
+              : {{ device.deviceName }}
+            </h2>
+            <h3>
+              <ion-icon name="md-compass" icon-only color="primary"></ion-icon>
+              : {{ device.location }}
+            </h3>
+          </ion-label>
+          <div item-end class="down">
+
+            <h2>{{ data[device._id] }} </h2>
+            <p>ลิตร/นาที</p>
+
+          </div>
+        </button>
+
+        <ion-item-options side="right">
+          <button ion-button icon-only color="light" (click)="showIdDevice(device._id,device.deviceName)">
+            <ion-icon name="md-finger-print" color="primary"></ion-icon>
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </span>
+</ion-content>

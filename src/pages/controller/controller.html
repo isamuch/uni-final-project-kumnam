@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>จัดการเครื่อง</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content hide-fab>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="crescent">
+    </ion-refresher-content>
+  </ion-refresher>
+  <span *ngIf="screen==true">
+
+    <h1 *ngIf="length == 0">ไม่พบอุปกรณ์</h1>
+    <ion-list *ngIf="length != 0">
+      <ion-item-sliding #item *ngFor="let device of devices">
+        <ion-item>
+          <img src="assets/pic/faucet.png" item-start *ngIf="available[device._id]===true">
+          <img src="assets/pic/faucetClose.png" item-start *ngIf="available[device._id]===false">
+          <ion-label>
+            <h2 *ngIf="mainDevice == device._id">
+              <ion-icon name="md-list-box" icon-only></ion-icon>
+              : {{device.deviceName}} (ก่อนแท้ง)
+            </h2>
+            <h2 *ngIf="mainDevice != device._id">
+              <ion-icon name="md-list-box" icon-only></ion-icon>
+              : {{device.deviceName}}
+            </h2>
+            <h3>
+              <ion-icon name="md-compass" icon-only color="primary"></ion-icon>
+              : {{device.location}}
+            </h3>
+          </ion-label>
+          <ion-toggle color="secondary" item-end [(ngModel)]="available[device._id]" (ionChange)="checkAvailable(device._id,device.deviceName)"></ion-toggle>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button icon-only color="danger" *ngIf="mainDevice == device._id" disabled>
+            <ion-icon name="md-trash"></ion-icon>
+          </button>
+          <button ion-button icon-only color="danger" *ngIf="mainDevice != device._id" (click)="delete(device._id)">
+            <ion-icon name="md-trash"></ion-icon>
+          </button>
+          <button ion-button icon-only color="yellow" (click)="setting(device)">
+            <ion-icon name="md-settings"></ion-icon>
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </span>
+
+  <ion-fab right bottom>
+    <button ion-fab color="danger" (click)="add()">
+      <ion-icon name="md-add"></ion-icon>
+    </button>
+  </ion-fab>
+
+
+
+
+</ion-content>

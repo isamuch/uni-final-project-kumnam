@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>ตั้งค่า</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="crescent">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-item-group>
+    <ion-item-divider>บัญชีผู้ใช้</ion-item-divider>
+    <ion-item>
+      <ion-label>ชื่อ</ion-label>
+      <p item-end> {{ name }}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label>อีเมล์</ion-label>
+      <p item-end>{{ email }}</p>
+    </ion-item>
+    <button ion-item (click)="changeHome()">
+      <ion-label>บ้าน</ion-label>
+      <p item-end>{{ homeName }}</p>
+    </button>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item-divider>การแจ้งเตือน</ion-item-divider>
+    <ion-item>
+      <ion-label>เปิด/ปิด อุปกรณ์</ion-label>
+      <ion-toggle [(ngModel)]="alertOnOff" (ionChange)="changeOnOff()"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>ตรวจจับน้ำรั่ว</ion-label>
+      <ion-toggle [(ngModel)]="alertDetect" (ionChange)="changeDetect()"></ion-toggle>
+    </ion-item>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item-divider>เกี่ยวกับ</ion-item-divider>
+    <!-- <a href="https://seniorproject.sit.kmutt.ac.th/showproject/IT57-RE10">
+      <button ion-item>
+        ผู้พัฒนา
+      </button>
+    </a> -->
+
+    <ion-item>
+      <ion-label>เวอร์ชั่นของแอพ</ion-label>
+      <p item-end>1.1.1 Beta</p>
+    </ion-item>
+  </ion-item-group>
+</ion-content>

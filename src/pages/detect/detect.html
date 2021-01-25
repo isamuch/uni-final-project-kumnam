@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>การใช้น้ำผิดปกติ</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="crescent">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <!-- warning อุปกรณ์ที่พบ [หมูน้อย] เวลา 28/10/2560 21:03:55 โดย In/Out Detection -->
+  <span *ngIf="screen==true">
+    <h1 *ngIf="length == 0">ไม่พบการใช้น้ำที่ผิดปกติ</h1>
+    <ion-list *ngIf="length > 0">
+      <button ion-item *ngFor="let log of logs" (click)="alert(log.devicesID,log.detect,log.deviceName,log.token)">
+        <ion-label>
+          <h2>
+            <ion-icon name="md-warning" icon-only color="yellow"></ion-icon>
+            อุปกรณ์ที่พบ [{{ log.deviceName }}]
+          </h2>
+          <h3>
+            เวลา {{ log.time }} โดย {{ log.detect }}
+
+          </h3>
+        </ion-label>
+      </button>
+    </ion-list>
+  </span>
+
+</ion-content>

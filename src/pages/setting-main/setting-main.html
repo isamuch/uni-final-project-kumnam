@@ -1,0 +1,146 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>ตั้งค่าบ้าน</ion-title>
+  </ion-navbar>
+
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="page">
+      <ion-segment-button value="setting">
+        ทั่วไป
+      </ion-segment-button>
+      <ion-segment-button value="unitSet">
+        คำนวณค่าน้ำ
+      </ion-segment-button>
+      <ion-segment-button value="member">
+        สมาชิก
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="crescent">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div *ngIf="page=='setting'">
+    <ion-item-divider color="light">บ้าน</ion-item-divider>
+    <ion-list>
+      <button ion-item (click)="editHomeName()">
+        <ion-label fixed>ชื่อบ้าน</ion-label>
+        <p item-end>{{ homeName }}</p>
+      </button>
+
+      <ion-item-divider color="light">ระบบตรวจสอบน้ำรั่ว</ion-item-divider>
+
+      <ion-item>
+        <ion-label>Outline Detection</ion-label>
+        <ion-toggle [(ngModel)]="outLineActive" (ionChange)="normalSetting()"></ion-toggle>
+      </ion-item>
+      <div class="notShow" [class.show]="outLineActive">
+        <button ion-item (click)="showWeek()">
+          <ion-label>จำนวนสัปดาห์ในการเก็บข้อมูล</ion-label>
+          <p item-end>{{ outLineWeek }}</p>
+        </button>
+      </div>
+      <ion-item>
+        <ion-label>In/Out Detection</ion-label>
+        <ion-toggle [(ngModel)]="inOutActive" (ionChange)="normalSetting()"></ion-toggle>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf="page=='unitSet'">
+    <ion-item-divider color="light">ตั้งค่าการคำนวณค่าน้ำ</ion-item-divider>
+
+    <ion-grid>
+      <ion-row class="head">
+        <ion-col>ตั้งแต่ (หน่วย)</ion-col>
+        <ion-col>ถึง (หน่วย)</ion-col>
+        <ion-col>ราคา (บาท)</ion-col>
+      </ion-row>
+
+      <ion-row *ngFor="let data of costRate">
+        <ion-col>
+          <p> {{ data.min }} </p>
+        </ion-col>
+        <ion-col>
+          <p> {{ data.max }} </p>
+        </ion-col>
+        <ion-col>
+          <p> {{ data.rate }} </p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <p> {{ min }} </p>
+        </ion-col>
+        <ion-col>
+          <input type="text" [(ngModel)]="max">
+        </ion-col>
+        <ion-col>
+          <input type="text" [(ngModel)]="rate">
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row class="last">
+        <ion-col>
+          <button ion-button color="secondary" full (click)="addRow()">เพิ่มแถว</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button color="danger" full (click)="delRow()">ลบแถว</button>
+        </ion-col>
+      </ion-row>
+      <!-- <ion-row>
+        <ion-col><button ion-button full>บันทึก</button></ion-col>
+      </ion-row> -->
+    </ion-grid>
+  </div>
+
+  <div *ngIf="page=='member'">
+    <ion-item-divider color="light">จัดการสมาชิกภายในบ้าน (เพิ่ม/ลบ)</ion-item-divider>
+    <ion-grid>
+      <ion-row class="head">
+        <ion-col>No.</ion-col>
+        <ion-col>E-mail</ion-col>
+        <ion-col>จัดการ</ion-col>
+      </ion-row>
+      <ion-row *ngFor="let user of users">
+        <ion-col>
+          <p>{{ user.no }}</p>
+        </ion-col>
+        <ion-col>
+          <p>{{ user.email }}
+            <span style="color:red;text-align: center;">{{ user.homeOwner}}</span>
+          </p>
+        </ion-col>
+        <ion-col *ngIf="user.homeOwner == null">
+          <button ion-button color="danger" *ngIf="email == homeOwner" (click)="alertDelMember(user.email)">
+            ลบสมาชิก
+          </button>
+          <button ion-button color="danger" *ngIf="email != homeOwner" disabled>
+            ลบสมาชิก
+          </button>
+        </ion-col>
+        <ion-col *ngIf="user.homeOwner != null"></ion-col>
+      </ion-row>
+      <ion-row class="last">
+        <ion-col col-3></ion-col>
+        <ion-col>
+          <button ion-button color="secondary" *ngIf="email == homeOwner" full (click)="alertAddMember()">
+            เพิ่มสมาชิก
+          </button>
+          <button ion-button color="secondary" *ngIf="email != homeOwner" disabled full>
+            เพิ่มสมาชิก
+          </button>
+        </ion-col>
+        <ion-col col-3></ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>

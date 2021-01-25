@@ -1,0 +1,13 @@
+expandable {
+       .expand-wrapper {
+           background-color: black;
+           height: 0;
+           transition: 1s all linear;
+           display: block !important;
+       }  
+
+       .collapsed {
+           height: 200px;
+           
+       }
+   }

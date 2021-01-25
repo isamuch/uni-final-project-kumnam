@@ -1,0 +1,35 @@
+page-show-graph {
+
+    div.blue {
+        text-align: center;
+        margin: 15px;
+    }
+
+    img{
+        height: 15px;
+        width: 25px;
+    }
+    h1 {
+        display: inline;
+    }
+
+
+    h1 {
+        text-align: center;
+    }
+    div.test {
+        background-color: gray;
+        height: 250px;
+        display: block;
+    }
+
+    ion-card {
+        background: rgb(64, 78, 88) !important;
+        color: white !important;
+    }
+
+    canvas#lineCanvas {
+        color: white !important;
+    }
+    
+}

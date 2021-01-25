@@ -1,0 +1,52 @@
+page-setting-main {
+    ion-item-divider {
+        font-weight: bold !important;
+        font-size: 18px !important;
+        color: rgb(150, 150, 150) !important;
+    }
+
+    h2{
+        color: transparent;
+    }
+
+    div.show {
+        height: 50px !important;
+    }
+
+    div.notShow {
+        height: 0;
+        overflow: hidden;
+        transition: 0.2s linear;
+    }
+
+    ion-col {
+        text-align: center;
+    }
+
+    ion-row {
+        border-bottom: 2px dashed #d3d3d3;
+    }
+
+    input {
+        text-align: center;
+        width: 80px;
+        height: 100%;
+        border: none;
+    }
+
+    ion-row.head {
+        font-size: 15px;
+        padding: 10px;
+        background-color: #488aff;
+        color:white;
+        border-bottom: none;
+    }
+
+    ion-row.last {
+        margin-top: 10px;
+        border: none;
+    }
+
+    
+
+}

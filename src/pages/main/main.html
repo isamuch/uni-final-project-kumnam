@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>หน้าหลัก</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-item class="head" no-lines>
+    <img src="assets/pic/house.png" />
+    <h1>{{ homeName }}</h1>
+  </ion-item>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col class="main" (click)="pushPage('settingHome')">
+        <img src="assets/pic/home/home.png" />
+        <p>บ้าน</p>
+      </ion-col>
+      <ion-col class="main" (click)="pushPage('account')">
+        <img src="assets/pic/home/account.png" />
+        <p>บัญชี</p>
+      </ion-col>
+      <ion-col class="main" (click)="pushPage('history')">
+        <img src="assets/pic/home/book.png" />
+        <p>ประวัติ</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="main" (click)="pushPage('graph')">
+        <img src="assets/pic/home/graph.png" />
+        <p>มอนิเตอร์</p>
+      </ion-col>
+      <ion-col class="main" (click)="pushPage('controller')">
+        <img src="assets/pic/home/controls.png" />
+        <p>จัดการเครื่อง</p>
+      </ion-col>
+      <ion-col class="main" (click)="pushPage('detections')">
+        <img *ngIf="detectLenght == 0" src="assets/pic/home/detect.png" />
+        <img *ngIf="detectLenght > 0" src="assets/warning2.png" />
+        <p>ตรวจสอบ</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="main" (click)="pushPage('setting')">
+        <img src="assets/pic/home/setting.png" />
+        <p>ตั้งค่า</p>
+      </ion-col>
+      <ion-col class="main">
+        <img src="assets/pic/home/about.png" (click)="pushPage('about')" />
+        <p>เกี่ยวกับ</p>
+      </ion-col>
+      <ion-col class="abc"></ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

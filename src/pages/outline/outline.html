@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Outline Detection</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content hide-fab>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="crescent">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div class="data">
+    <ion-grid>
+      <ion-row class="head1">
+        <ion-col class="main">
+          จำนวนวันที่ระบบเรียนรู้ไปแล้ว
+          <br> ตั้งค่าไว้ทุกๆ 4 สัปดาห์
+        </ion-col>
+      </ion-row>
+      <ion-row class="head">
+        <ion-col col-4>ชื่อ</ion-col>
+        <ion-col>จ</ion-col>
+        <ion-col>อ</ion-col>
+        <ion-col>พ</ion-col>
+        <ion-col>พฤ</ion-col>
+        <ion-col>ศ</ion-col>
+        <ion-col>ส</ion-col>
+        <ion-col>อา</ion-col>
+      </ion-row>
+      <ion-row class="content" *ngFor="let idDevice of idDevices">
+        <ion-col col-4 class="name">{{ devices[idDevice._id].deviceName }}</ion-col>
+
+        <ion-col>
+          <span *ngIf="devices[idDevice._id].mon.created_pattern == false">{{ devices[idDevice._id].mon.week_of_lenarned }}</span>
+          <ion-icon *ngIf="devices[idDevice._id].mon.created_pattern == true" name="md-checkmark-circle" color="secondary"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <span *ngIf="devices[idDevice._id].tues.created_pattern == false">{{ devices[idDevice._id].tues.week_of_lenarned }}</span>
+          <ion-icon *ngIf="devices[idDevice._id].tues.created_pattern == true" name="md-checkmark-circle" color="secondary"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <span *ngIf="devices[idDevice._id].wed.created_pattern == false">{{ devices[idDevice._id].wed.week_of_lenarned }}</span>
+          <ion-icon *ngIf="devices[idDevice._id].wed.created_pattern == true" name="md-checkmark-circle" color="secondary"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <span *ngIf="devices[idDevice._id].thurs.created_pattern == false">{{ devices[idDevice._id].thurs.week_of_lenarned }}</span>
+          <ion-icon *ngIf="devices[idDevice._id].thurs.created_pattern == true" name="md-checkmark-circle" color="secondary"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <span *ngIf="devices[idDevice._id].fri.created_pattern == false">{{ devices[idDevice._id].fri.week_of_lenarned }}</span>
+          <ion-icon *ngIf="devices[idDevice._id].fri.created_pattern == true" name="md-checkmark-circle" color="secondary"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <span *ngIf="devices[idDevice._id].sat.created_pattern == false">{{ devices[idDevice._id].sat.week_of_lenarned }}</span>
+          <ion-icon *ngIf="devices[idDevice._id].sat.created_pattern == true" name="md-checkmark-circle" color="secondary"></ion-icon>
+        </ion-col>
+        <ion-col class="last">
+          <span *ngIf="devices[idDevice._id].sun.created_pattern == false">{{ devices[idDevice._id].sun.week_of_lenarned }}</span>
+          <ion-icon *ngIf="devices[idDevice._id].sun.created_pattern == true" name="md-checkmark-circle" color="secondary"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-fab right bottom>
+    <button ion-fab color="light">
+      <ion-icon name="arrow-dropleft"></ion-icon>
+    </button>
+    <ion-fab-list side="left">
+      <button ion-fab (click)="showCheckbox()">
+        <ion-icon name="md-refresh-circle"></ion-icon>
+      </button>
+      <button ion-fab (click)="showRadio()">
+        <ion-icon name="md-podium"></ion-icon>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
+
+
+</ion-content>

@@ -1,0 +1,45 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>แก้ไขข้อมูลอุปกรณ์</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="crescent">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-item color="light">รายละเอียดอุปกรณ์</ion-item>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label floating>ชื่ออุปกรณ์</ion-label>
+          <ion-input type="text" [(ngModel)]="name" autocorrect="on"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>ตำแหน่ง</ion-label>
+          <ion-input type="text" [(ngModel)]="location"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <br>
+
+  <ion-row>
+    <ion-col col-1></ion-col>
+    <ion-col col-10>
+      <button ion-button full (click)="saveDevice()">
+        บันทึก
+      </button>
+    </ion-col>
+    <ion-col col-1></ion-col>
+  </ion-row>
+
+</ion-content>

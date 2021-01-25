@@ -1,0 +1,96 @@
+page-main {
+
+//    ion-list button {
+//        text-align: center !important;
+//
+//    }
+//
+//    ion-list button img {
+//        height: 40px;
+//    }
+//
+//    div.home button {
+//        color: rgb(43, 43, 43);
+//        background-color: rgb(226, 226, 226) !important;
+//    }
+//
+//    div.home {
+//        height: 0;
+//        overflow: hidden;
+//        transition: 0.5s; 
+//    }
+//
+//    div.showHome {
+//        height: 150px;
+//    }
+//
+//
+    ion-item.head{
+        background-color: #488aff;
+        text-align: center;
+        
+    }
+    ion-item.head h1 {
+        font-size: 25px;
+        color: white;
+    }
+
+    ion-item.head img{
+        width: 28%;
+    }
+
+//// ====================================================
+
+//
+//    .bt {
+//        margin: 5px;
+//        display: block;
+//        width: 95%;
+//        height: 60px;
+//        position: relative;
+//        border: 2px solid #04a;
+//        border-radius: 5px;
+//        background-color: #06c;
+//    }
+//
+//    .bt .ct {
+//        display: block;
+//        position: absolute;
+//        width: 100%;
+//        bottom: 6px;
+//        height: 100%;
+//        line-height: 60px;        
+//        background-color: #09f; 
+//        text-align: center;
+//        color: #fff;
+//        text-transform: uppercase;
+//        box-shadow: 0px 6px 0px #06c;
+//        border-radius: 5px;
+//        transition: all 0.1s linear;
+//    }
+//
+//    .bt:active .ct {
+//        bottom: 0px;
+//        box-shadow: 0px 0px 0px #06c;
+//        
+//    }
+// =========================================================
+
+    ion-col {
+        padding-top: 10px !important;
+        text-align: center;
+    }
+
+    ion-col img {
+        //height:40px; 
+        width:40%; 
+    }
+
+    ion-col.main:active {
+        background-color: rgba(0,0,0,0.2);
+    }
+
+    
+    
+
+}
